@@ -1,23 +1,23 @@
 
 <?php
-    header("Access-Control-Allow-Methods: DELETE");
+    header("Access-Control-Allow-Methods: GET");
     include("../config.php");
 
     $config = new Config();
 
     if($_SERVER['REQUEST_METHOD']=="GET"){
         
-     
-        $res = $config->fetch_data();
+        
+        $res = $config->fetch();
 
-        $my_all_data = [];
+        $data = [];
 
        while($record = mysqli_fetch_assoc($res)){
-        array_push($my_all_data,$record);
+        array_push($data,$record);
        }
-       $arr['data'] = $my_all_data;
+       $arr['data'] = $data;
     }else{
-        $arr['error'] = "Only GEt HTTP method allowed...";
+        $arr['error'] = "Only GET HTTP method allowed...";
     }
 
     echo json_encode($arr);

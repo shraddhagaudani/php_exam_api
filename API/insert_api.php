@@ -3,7 +3,7 @@
     header("Access-Control-Allow-Methods: POST");
     include("../config.php");
 
-    $config = new config();
+    $config = new Config();
 
     if($_SERVER['REQUEST_METHOD']=="POST"){
         $name = $_POST['name'];
@@ -15,7 +15,7 @@
 
         if($res){
             $arr['msg'] = "Record inserted....";
-          //  http_response_code(201);
+            http_response_code(201);
         }else{
             $arr['msg'] = "Record not inserted....";
         }
